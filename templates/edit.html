@@ -1,0 +1,29 @@
+<!-- templates/edit.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h4>Edit Expense</h4>
+<form method="post" action="{{ url_for('edit', expense_id=expense.id) }}">
+  <div class="mb-2">
+    <label>Amount</label>
+    <input name="amount" type="number" step="0.01" value="{{ expense.amount }}" class="form-control" required>
+  </div>
+  <div class="mb-2">
+    <label>Category</label>
+    <input name="category" value="{{ expense.category }}" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label>Date</label>
+    <input name="date" type="date" value="{{ expense.date.strftime('%Y-%m-%d') }}" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label>Payment method</label>
+    <input name="payment_method" value="{{ expense.payment_method }}" class="form-control">
+  </div>
+  <div class="mb-2">
+    <label>Description</label>
+    <input name="description" value="{{ expense.description }}" class="form-control">
+  </div>
+  <button class="btn btn-primary">Update</button>
+  <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancel</a>
+</form>
+{% endblock %}
